@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Localizador de Professores</title>
+  <style>
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f4f4f9;
+      padding: 2px;
+      min-height: 100vh;
+    }
+
+    /* Contêiner principal */
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+    }
+
+    /* Estilo das salas (cards) */
+    .room {
+        padding: 20px;
+        text-align: center;
+        background: linear-gradient(45deg, #467cb9 ,#4c84c4);
+        height: 345px;
+        color: #f2f3f5;
+        text-shadow: 3px 5px 10px rgba(0, 0, 0, 0.33);
+        text-transform: uppercase;
+        font-size: 26px;
+        flex: 1 1 calc(33% - 10px); /* 3 cards por linha com espaçamento de 10px */
+        border-radius: 5px;
+        margin: 5px;
+    }
+
+    .professor {
+        color: rgb(81, 255, 81);
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 20px;
+        text-shadow: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="room" id="salaA">
+      Sala 876
+      <div class="professor" id="professorSalaA"></div>
+    </div>
+    <div class="room" id="salaB">
+      Sala 123
+      <div class="professor" id="professorSalaB"></div>
+    </div>
+    <div class="room" id="biblioteca">
+      Biblioteca
+      <div class="professor" id="professorBiblioteca"></div>
+    </div>
+    <div class="room" id="quadra">
+      Quadra
+      <div class="professor" id="professorQuadra"></div>
+    </div>
+    <div class="room" id="laboratorio">
+      Laboratório
+      <div class="professor" id="professorLaboratorio"></div>
+    </div>
+    <div class="room" id="sala3C">
+      Sala 982
+      <div class="professor" id="professorSala3C"></div>
+    </div>
+    <div class="room" id="sala8B">
+      Sala 812B
+      <div class="professor" id="professorSala8B"></div>
+    </div>
+  </div>
+
+  <script>
+    // Simulação de IDs de professores
+    const professores = {
+      'uid1': 'Wesley Souza',
+      'uid2': 'Washington',
+      'uid3': 'Sidnei'
+    };
+
+    // Localização atual dos professores (mapeamento)
+    let localizacoes = {
+      'uid1': 'salaA',
+      'uid2': 'biblioteca',
+      'uid3': 'quadra'
+    };
+
+    // Função para mover professor de uma sala para outra
+    function moverProfessor(uid, novaSala) {
+      const professor = professores[uid];
+      const salaAnterior = localizacoes[uid];
+
+      // Limpa a sala anterior, removendo o nome do professor
+      if (salaAnterior) {
+        document.getElementById(`professor${capitalizeFirstLetter(salaAnterior)}`).innerHTML = '';
+      }
+
+      // Adiciona o professor na nova sala
+      document.getElementById(`professor${capitalizeFirstLetter(novaSala)}`).innerHTML = professor;
+      localizacoes[uid] = novaSala;
+    }
+
+    // Função para capitalizar a primeira letra (para IDs das divs)
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    // Simulação: mover professor a cada 5 segundos para uma sala aleatória
+    setInterval(() => {
+      const salas = ['salaA', 'salaB', 'biblioteca', 'quadra', 'laboratorio', 'sala3C', 'sala8B'];
+      const randomRoom = salas[Math.floor(Math.random() * salas.length)];
+      moverProfessor('uid1', randomRoom);
+    }, 1000);
+
+    setInterval(() => {
+      const salas = ['salaA', 'salaB', 'biblioteca', 'quadra', 'laboratorio', 'sala3C', 'sala8B'];
+      const randomRoom = salas[Math.floor(Math.random() * salas.length)];
+      moverProfessor('uid2', randomRoom);
+    }, 1000);
+
+    setInterval(() => {
+      const salas = ['salaA', 'salaB', 'biblioteca', 'quadra', 'laboratorio', 'sala3C', 'sala8B'];
+      const randomRoom = salas[Math.floor(Math.random() * salas.length)];
+      moverProfessor('uid3', randomRoom);
+    }, 1000);
+  </script>
+
+</body>
+</html>
