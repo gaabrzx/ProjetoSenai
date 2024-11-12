@@ -1,0 +1,42 @@
+#card
+  width: 250px
+  height: 250px
+  border-radius: 50px
+  background: #e0e0e0
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: center
+  
+  // Borda padrão sem workerName
+  &.without-worker
+    border: 2px solid transparent
+  
+  // Borda verde quando tiver workerName
+  &.with-worker
+    border: 2px solid #007bff
+
+  .worker_div
+    display: flex
+    align-items: center
+    gap: 5px
+    
+    .worker_image
+      img
+        border-radius: 5px
+        width: 25px
+        height: 25px
+        object-fit: cover
+        margin-left: 15px
+        
+    .worker_name
+      margin-bottom: 5px
+      font-size: 18px
+      
+  .room_name
+    position: absolute
+    top: 30px
+    left: 20px
+    font-size: 24px
+    font-weight: 500

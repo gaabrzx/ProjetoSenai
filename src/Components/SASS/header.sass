@@ -1,0 +1,40 @@
+.main_header
+  padding: 40px 50px
+  display: flex
+  justify-content: space-between
+  align-items: center
+  transition: all 0.3s ease  // Transição suave para hover e outros efeitos
+
+  .location_div
+    display: flex
+    align-items: center
+    gap: 15px  // Distância maior para um visual mais espaçado
+    color: white
+    font-weight: 500
+    transition: color 0.3s ease
+
+    #location_icon
+      color: #fff
+      background-color: #007bff  // Azul mais vibrante para o ícone
+      padding: 12px
+      font-size: 32px
+      border-radius: 50%
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2)  // Sombra suave para o ícone
+      transition: all 0.3s ease  // Efeito suave ao passar o mouse
+      cursor: pointer
+
+      &:hover
+        background-color: #0056b3  // Azul mais escuro quando o mouse passa por cima
+        transform: scale(1.1)  // Animação de aumento no ícone
+        cursor: default
+
+    p
+      font-size: 26px  // Tamanho da fonte para dar mais destaque
+      letter-spacing: -0.5px
+      transition: all 0.3s ease
+      color: black
+
+      &:hover
+        color: #007bff  // Cor suave no hover para o texto
+        transform: translateX(5px)  // Efeito de translação para o texto
+        cursor: default
